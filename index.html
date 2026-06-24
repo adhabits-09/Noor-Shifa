@@ -350,7 +350,7 @@
             </div>
             <div class="mb-3">
                 <label class="form-label fw-semibold small">WhatsApp Number *</label>
-                <input type="tel" name="whatsapp" class="form-control" placeholder="e.g. 9876543210" pattern="[0-9]{10}" required>
+                <input type="tel" name="whatsapp" class="form-control" placeholder="e.g. 7983746059" pattern="[0-9]{10}" required>
             </div>
             <input type="hidden" name="source" id="formSource" value="Popup">
             <button type="submit" class="wa-btn w-100 justify-content-center" id="submitBtn">
@@ -370,8 +370,8 @@
 
 <script>
 // ===== CONFIGURATION =====
-const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_URL_HERE'; // <-- REPLACE WITH YOUR URL
-const WHATSAPP_NUMBER = '919168770269'; // Shifa's WhatsApp number (with country code)
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzVprV-DzvTD8LQOh9K66GNHYc7Wc9ChhFAD2uO5u6Os96KZfWAhXoxjvzeL6ymuhSF/exec';
+const WHATSAPP_NUMBER = '917983746059';
 
 // ===== TRACKING STATE (Prevents Duplicate Events) =====
 let contactEventFired = false;
@@ -468,10 +468,14 @@ leadForm.addEventListener('submit', async function(e) {
     sheetData.append('source', source);
     
     try {
-        // Send to Google Sheet
-        const response = await fetch(script.google.com/macros/s/AKfycbzVprV-DzvTD8LQOh9K66GNHYc7Wc9ChhFAD2uO5u6Os96KZfWAhXoxjvzeL6ymuhSF/exec, {
+        // Send to Google Sheet using no-cors mode (for cross-origin)
+        await fetch(GOOGLE_SCRIPT_URL, {
             method: 'POST',
-            body: sheetData
+            mode: 'no-cors',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: sheetData.toString()
         });
         
         // Fire Contact Event ONLY ONCE per session (prevents duplicate tracking)
@@ -498,7 +502,6 @@ leadForm.addEventListener('submit', async function(e) {
         
     } catch (error) {
         console.error('Error:', error);
-        alert('Something went wrong. Please try again or contact directly on WhatsApp.');
         
         // Still redirect to WhatsApp even if sheet fails
         const message = `Hi Noor Shifa! I'm ${name}. I want to learn digital skills. Please guide me.`;
