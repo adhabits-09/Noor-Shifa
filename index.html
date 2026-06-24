@@ -469,7 +469,7 @@ leadForm.addEventListener('submit', async function(e) {
     
     try {
         // Send to Google Sheet
-        const response = await fetch(GOOGLE_SCRIPT_URL, {
+        const response = await fetch(script.google.com/macros/s/AKfycbzVprV-DzvTD8LQOh9K66GNHYc7Wc9ChhFAD2uO5u6Os96KZfWAhXoxjvzeL6ymuhSF/exec, {
             method: 'POST',
             body: sheetData
         });
