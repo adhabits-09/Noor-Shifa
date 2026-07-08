@@ -82,22 +82,21 @@
         }
         .glow-border:hover{box-shadow:0 0 25px rgba(140,58,85,.4);transform:translateY(-3px);}
 
-        /* Unified CTA Button - WhatsApp Green */
-        .open-any, .wa-btn{
-            background:linear-gradient(135deg,var(--wa-green),var(--wa-dark)) !important;
-            color:var(--white) !important;
+        .wa-btn{
+            background:linear-gradient(135deg,var(--primary),var(--light));
+            color:var(--white);
             padding:.85rem 1.8rem;border-radius:50px;font-weight:800;border:none;
             display:inline-flex;align-items:center;gap:.5rem;
-            box-shadow:0 8px 20px rgba(37,211,102,.3);
+            box-shadow:0 8px 20px rgba(140,58,85,.3);
             cursor:pointer;transition:all .3s;text-decoration:none;font-size:1rem;white-space:nowrap;
             position:relative;overflow:hidden;
         }
-        .open-any:hover, .wa-btn:hover{
+        .wa-btn:hover{
             transform:translateY(-3px) scale(1.03);
-            box-shadow:0 0 40px rgba(37,211,102,.7),0 15px 30px rgba(37,211,102,.4);
+            box-shadow:var(--glow-intense),0 15px 30px rgba(140,58,85,.4);
             color:var(--white);
         }
-        .open-any:active, .wa-btn:active{transform:translateY(0) scale(.98);}
+        .wa-btn:active{transform:translateY(0) scale(.98);}
 
         section{padding:50px 0;position:relative;}
         .hero-section{
@@ -183,21 +182,12 @@
         #privacyContent{display:flex;flex-direction:column;}
         .pp-scroll{overflow-y:auto;padding:1.5rem;flex:1;}
 
-        /* Direct WhatsApp CTA Card */
-        .cta-card {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: var(--shadow-hover);
-            border: 2px solid var(--light);
-        }
-
         @media(max-width:768px){
             section{padding:40px 0;}
             .hero-section{padding:50px 0 30px;}
             .feedback-item{width:190px;}
             .counter{font-size:1.6rem;}
-            .open-any, .wa-btn{width:100%;justify-content:center;}
+            .wa-btn{width:100%;justify-content:center;}
             h1.display-3{font-size:2rem;}
             h2.display-5{font-size:1.5rem;}
         }
@@ -240,11 +230,7 @@
             Join <span class="counter" data-target="500" data-suffix="+">0</span> Achievers
         </h1>
         <p class="hero-text-compact">Rising Together • From Zero to Digital Earner</p>
-        <a href="https://wa.me/917983746059?text=Hi%20Noor%20Shifa!%20I%20want%20to%20learn%20digital%20skills%20and%20start%20earning%20from%20home" 
-           class="open-any glow-pulse" 
-           data-source="Hero Direct WhatsApp">
-            📲 Start Your Journey Today
-        </a>
+        <button class="wa-btn open-any glow-pulse" data-source="Hero">📲 Start Your Journey Today</button>
     </div>
 </section>
 
@@ -253,11 +239,7 @@
     <div class="container">
         <div class="row g-4 align-items-center">
             <div class="col-lg-6">
-                <a href="https://wa.me/917983746059?text=Hi%20Noor%20Shifa!%20I%20want%20to%20learn%20digital%20skills" 
-                   class="open-any glow-pulse mb-3 d-inline-block" 
-                   data-source="About Image Button">
-                    👇 See My Journey 👇
-                </a>
+                <button class="wa-btn open-any glow-pulse mb-3 d-inline-block" data-source="About Image Button">👇 See My Journey 👇</button>
                 <div class="rounded-3 overflow-hidden shadow-lg" style="border:3px solid var(--primary);">
                     <img src="https://i.ibb.co/JwWkPHfZ/8f284a4ec3806f27087e9130cdcdc61a-jpg.jpg" alt="Noor Shifa" style="width:100%;display:block;">
                 </div>
@@ -271,11 +253,7 @@
                     <li class="mb-2">✅ <strong>7L+</strong> Monthly Earnings</li>
                     <li class="mb-2">✅ <strong>Work From Home</strong> Flexibility</li>
                 </ul>
-                <a href="https://wa.me/917983746059?text=Hi%20Noor%20Shifa!%20I%20want%20to%20chat%20about%20digital%20skills" 
-                   class="open-any mt-3" 
-                   data-source="About Text">
-                    💬 Chat on WhatsApp
-                </a>
+                <button class="wa-btn open-any mt-3" data-source="About Text">💬 Chat on WhatsApp</button>
             </div>
         </div>
     </div>
@@ -318,31 +296,12 @@
     </div>
 </section>
 
-<!-- ===== FINAL CTA (Faizeen Style - Direct WhatsApp + Form) ===== -->
-<section class="py-5" style="background: linear-gradient(135deg, var(--primary), var(--light));">
+<!-- ===== CTA SECTION ===== -->
+<section class="py-5 text-center" style="background: linear-gradient(135deg, var(--primary), var(--light));">
     <div class="container">
-        <div class="cta-card text-center">
-            <h2 class="display-5 fw-bold mb-3 gradient-text">Ready to Transform Your Life?</h2>
-            <p class="mb-4">Join 500+ women who are already earning from home. Your journey starts with one message.</p>
-            
-            <!-- Direct WhatsApp -->
-            <a href="https://wa.me/917983746059?text=Hi%20Noor%20Shifa!%20I%20want%20to%20learn%20digital%20skills%20and%20start%20earning%20from%20home" 
-               class="open-any glow-pulse mb-3" 
-               data-source="Bottom Direct WhatsApp">
-                🌸 Message on WhatsApp Now
-            </a>
-            
-            <p class="text-muted mt-3 mb-2">Or fill the form for personalized guidance</p>
-            
-            <!-- Form Button -->
-            <button class="wa-btn open-any" data-source="Bottom Form CTA" style="background: linear-gradient(135deg,var(--primary),var(--light)) !important;">
-                📝 Fill Form & Connect
-            </button>
-            
-            <p class="small text-muted mt-3 mb-0">
-                By connecting, you agree to our <a href="#" id="privacyLink" style="color:var(--primary);">Privacy Policy</a>
-            </p>
-        </div>
+        <h2 class="display-5 fw-bold text-white mb-3">Ready to Transform Your Life?</h2>
+        <p class="text-white mb-4" style="opacity:0.9;">Join 500+ women who are already earning from home. Your journey starts with one message.</p>
+        <button class="wa-btn open-any glow-pulse" style="background:var(--white);color:var(--primary);" data-source="Bottom CTA">🌸 Start Your Journey Now</button>
     </div>
 </section>
 
@@ -404,6 +363,9 @@
                 </span>
             </button>
         </form>
+        <p class="small text-center mt-3 mb-0" style="color:var(--light);">
+            By submitting, you agree to our <a href="#" id="privacyLink" style="color:var(--primary);">Privacy Policy</a>
+        </p>
     </div>
 </div>
 
@@ -422,39 +384,10 @@ const formBackdrop = document.getElementById('formBackdrop');
 const formContainer = document.getElementById('formContainer');
 const leadForm = document.getElementById('leadForm');
 const closeFormBtn = document.getElementById('closeFormBtn');
+const openAnyButtons = document.querySelectorAll('.open-any');
 const privacyModal = document.getElementById('privacyModal');
 const privacyLink = document.getElementById('privacyLink');
 const closePrivacyBtn = document.getElementById('closePrivacyBtn');
-
-// ===== FIRE CONTACT EVENT (Unified) =====
-function fireContactEvent(source) {
-    if (!contactEventFired && typeof fbq === 'function') {
-        fbq('track', 'Contact', {
-            content_name: 'WhatsApp Lead',
-            content_category: source || 'Direct WhatsApp',
-            value: 1.00,
-            currency: 'INR'
-        });
-        contactEventFired = true;
-        console.log('Contact event fired:', source);
-    }
-}
-
-// ===== OPEN WHATSAPP (Reliable) =====
-function openWhatsApp(message, source) {
-    const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-    
-    // Fire tracking
-    fireContactEvent(source);
-    
-    // Try window.open first
-    const newWindow = window.open(waUrl, '_blank');
-    
-    // Fallback for mobile/popup blockers
-    if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
-        window.location.href = waUrl;
-    }
-}
 
 // ===== FORM OPEN/CLOSE =====
 function openForm(source) {
@@ -470,21 +403,12 @@ function closeForm() {
     document.body.style.overflow = '';
 }
 
-// Event delegation for FORM buttons only (class="open-any" but NOT direct links)
-document.addEventListener('click', function(e) {
-    const btn = e.target.closest('.open-any');
-    if (!btn) return;
-    
-    // If it's an <a> tag with href, let it work normally (direct WhatsApp)
-    if (btn.tagName === 'A' && btn.href && btn.href.includes('wa.me')) {
-        // Track but don't prevent default
-        fireContactEvent(btn.dataset.source || 'Direct WhatsApp');
-        return;
-    }
-    
-    // If it's a button, open form
-    e.preventDefault();
-    openForm(btn.dataset.source);
+// Event delegation for all CTA buttons
+openAnyButtons.forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        openForm(this.dataset.source);
+    });
 });
 
 closeFormBtn.addEventListener('click', closeForm);
@@ -508,46 +432,64 @@ privacyModal.addEventListener('click', closePrivacy);
 // ===== FORM SUBMISSION (WhatsApp FIRST, Sheet BACKGROUND) =====
 leadForm.addEventListener('submit', async function(e) {
     e.preventDefault();
-    
+
     const submitBtn = document.getElementById('submitBtn');
     const btnText = document.getElementById('btnText');
     const btnSpinner = document.getElementById('btnSpinner');
-    
+
     // Get values
-    const name = leadForm.querySelector('[name="name"]').value.trim();
-    const age = leadForm.querySelector('[name="age"]').value;
-    const gender = leadForm.querySelector('[name="gender"]').value;
-    const profession = leadForm.querySelector('[name="profession"]').value;
-    const whatsapp = leadForm.querySelector('[name="whatsapp"]').value.trim();
-    const source = document.getElementById('formSource').value;
-    
+    const formData = new FormData(leadForm);
+    const name = formData.get('name').trim();
+    const age = formData.get('age');
+    const gender = formData.get('gender');
+    const profession = formData.get('profession');
+    const whatsapp = formData.get('whatsapp').trim();
+    const source = formData.get('source');
+
     // Validation
     if (!name || !age || !gender || !profession || !whatsapp) {
         alert('Please fill all required fields!');
         return;
     }
-    
+
     if (!/^\d{10}$/.test(whatsapp)) {
         alert('Please enter valid 10-digit WhatsApp number!');
         return;
     }
-    
+
     // Show loading
     submitBtn.disabled = true;
     btnText.classList.add('d-none');
     btnSpinner.classList.remove('d-none');
-    
+
     // Prepare WhatsApp message
     const message = `Hi Noor Shifa! I'm ${name}, ${age} years old. I'm a ${profession}. I want to learn digital skills and start earning from home. Please guide me.`;
-    
+    const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
     // STEP 1: Open WhatsApp IMMEDIATELY (before anything else)
-    openWhatsApp(message, 'Form Submit - ' + source);
-    
-    // STEP 2: Close form and reset
+    const newWindow = window.open(waUrl, '_blank');
+
+    // Fallback for mobile/popup blockers
+    if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+        window.location.href = waUrl;
+    }
+
+    // STEP 2: Fire Contact Event ONLY ONCE per session
+    if (!contactEventFired && typeof fbq === 'function') {
+        fbq('track', 'Contact', {
+            content_name: 'WhatsApp Lead',
+            content_category: 'Form Submit - ' + source,
+            value: 1.00,
+            currency: 'INR'
+        });
+        contactEventFired = true;
+    }
+
+    // STEP 3: Close form and reset
     closeForm();
     leadForm.reset();
-    
-    // STEP 3: Send to Google Sheet in background (fire and forget)
+
+    // STEP 4: Send to Google Sheet in background (fire and forget)
     const sheetData = new URLSearchParams();
     sheetData.append('name', name);
     sheetData.append('age', age);
@@ -555,16 +497,20 @@ leadForm.addEventListener('submit', async function(e) {
     sheetData.append('profession', profession);
     sheetData.append('whatsapp', whatsapp);
     sheetData.append('source', source);
-    
-    fetch(GOOGLE_SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: sheetData.toString()
-    }).catch(err => console.log('Sheet error:', err));
-    
+
+    try {
+        await fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: sheetData.toString()
+        });
+    } catch (error) {
+        console.error('Sheet error:', error);
+    }
+
     // Reset button
     submitBtn.disabled = false;
     btnText.classList.remove('d-none');
@@ -581,7 +527,7 @@ function animateCounters() {
         const duration = 2000;
         const step = target / (duration / 16);
         let current = 0;
-        
+
         const updateCounter = () => {
             current += step;
             if (current < target) {
