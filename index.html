@@ -198,6 +198,7 @@
     </style>
 <base target="_blank">
 <base target="_blank">
+<base target="_blank">
 </head>
 <body class="text-dark">
 
@@ -376,8 +377,6 @@
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzVprV-DzvTD8LQOh9K66GNHYc7Wc9ChhFAD2uO5u6Os96KZfWAhXoxjvzeL6ymuhSF/exec';
 const WHATSAPP_NUMBER = '917983746059';
 
-// ===== TRACKING STATE (Prevents Duplicate Events) =====
-let contactEventFired = false;
 
 // ===== DOM ELEMENTS =====
 const formBackdrop = document.getElementById('formBackdrop');
@@ -474,15 +473,9 @@ leadForm.addEventListener('submit', async function(e) {
         window.location.href = waUrl;
     }
 
-    // STEP 2: Fire Contact Event ONLY ONCE per session
-    if (!contactEventFired && typeof fbq === 'function') {
-        fbq('track', 'Contact', {
-            content_name: 'WhatsApp Lead',
-            content_category: 'Form Submit - ' + source,
-            value: 1.00,
-            currency: 'INR'
-        });
-        contactEventFired = true;
+    // STEP 2: Fire Contact Event (every time - same as Faizeen)
+    if (typeof fbq === 'function') {
+        fbq('track', 'Contact');
     }
 
     // STEP 3: Close form and reset
