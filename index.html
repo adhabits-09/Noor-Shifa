@@ -199,6 +199,7 @@
 <base target="_blank">
 <base target="_blank">
 <base target="_blank">
+<base target="_blank">
 </head>
 <body class="text-dark">
 
@@ -403,11 +404,13 @@ function closeForm() {
 }
 
 // Event delegation for all CTA buttons
-openAnyButtons.forEach(btn => {
-    btn.addEventListener('click', function(e) {
+// Event delegation for all CTA buttons (like Faizeen)
+document.addEventListener('click', function(e) {
+    const trigger = e.target.closest('.open-any');
+    if (trigger && !trigger.closest('#formContainer')) {
         e.preventDefault();
-        openForm(this.dataset.source);
-    });
+        openForm(trigger.dataset.source || 'Website');
+    }
 });
 
 closeFormBtn.addEventListener('click', closeForm);
@@ -465,17 +468,17 @@ leadForm.addEventListener('submit', async function(e) {
     const message = `Hi Noor Shifa! I'm ${name}, ${age} years old. I'm a ${profession}. I want to learn digital skills and start earning from home. Please guide me.`;
     const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
-    // STEP 1: Open WhatsApp IMMEDIATELY (before anything else)
+    // STEP 1: Fire Contact Event FIRST (before WhatsApp redirect)
+    if (typeof fbq === 'function') {
+        fbq('track', 'Contact');
+    }
+
+    // STEP 2: Open WhatsApp
     const newWindow = window.open(waUrl, '_blank');
 
     // Fallback for mobile/popup blockers
     if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
         window.location.href = waUrl;
-    }
-
-    // STEP 2: Fire Contact Event (every time - same as Faizeen)
-    if (typeof fbq === 'function') {
-        fbq('track', 'Contact');
     }
 
     // STEP 3: Close form and reset
