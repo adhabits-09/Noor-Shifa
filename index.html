@@ -254,8 +254,8 @@
         <div class="row g-4 align-items-center">
             <div class="col-lg-6">
                 <div class="open-any glow-pulse mb-3 d-inline-block">👇 See My Journey 👇</div>
-                <div class="rounded-3 overflow-hidden shadow-lg" style="max-width:400px;margin:0 auto;">
-                    <img src="https://i.ibb.co/PR2ThFv/Whats-App-Image-2026-06-17-at-2-30-35-PM.jpg" class="w-100" alt="Noor Shifa" loading="lazy" style="max-height:500px;object-fit:cover;object-position:top;">
+                <div class="rounded-3 overflow-hidden shadow-lg">
+                    <img src="https://i.ibb.co/PR2ThFv/Whats-App-Image-2026-06-17-at-2-30-35-PM.jpg" class="w-100" alt="Noor Shifa" loading="lazy" style="max-width:380px;display:block;margin:0 auto;">
                 </div>
             </div>
             <div class="col-lg-6">
@@ -648,11 +648,12 @@
         // Prepare data for Google Sheet
         const sheetData = new URLSearchParams();
         sheetData.append('name', name);
+        sheetData.append('phone', phone);
         sheetData.append('age', age);
         sheetData.append('gender', gender);
         sheetData.append('profession', profession);
-        sheetData.append('whatsapp', phone);
         sheetData.append('source', source);
+        sheetData.append('timestamp', new Date().toISOString());
 
         try {
             // Send to Google Sheet
