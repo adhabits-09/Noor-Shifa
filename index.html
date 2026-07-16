@@ -628,7 +628,7 @@
     closePrivacyBtn.addEventListener('click',closePrivacy);
     privacyModal.addEventListener('click',closePrivacy);
 
-    /* Simple click handler - matches Faizeen pattern */
+    /* Simple click handler - Faizeen style with double-click fix */
     document.addEventListener('click',(e)=>{
         const trigger=e.target.closest('.open-any');
         if(trigger&&!trigger.closest('#formContainer')){
@@ -638,29 +638,34 @@
         }
     });
 
-    mainForm.addEventListener('submit',(e)=>{
+    mainForm.addEventListener('submit', async (e)=>{
         e.preventDefault();
         const name=document.getElementById('inp_name').value.trim();
         const phone=document.getElementById('inp_phone').value.replace(/\D/g,'');
         const age=document.getElementById('inp_age').value;
         const gender=document.getElementById('inp_gender').value;
         const profession=document.getElementById('inp_profession').value;
+        const source=sourceInfo.value;
+
         if(!name||phone.length<10||!age||!gender||!profession){alert('Please fill all fields correctly.');return;}
 
-        const formData=new FormData();
-        formData.append('name',name);
-        formData.append('phone',phone);
-        formData.append('age',age);
-        formData.append('gender',gender);
-        formData.append('profession',profession);
-        formData.append('source',sourceInfo.value);
-        formData.append('timestamp',new Date().toISOString());
+        // Prepare data for Google Sheet
+        const sheetData = new URLSearchParams();
+        sheetData.append('name', name);
+        sheetData.append('whatsapp', phone);
+        sheetData.append('age', age);
+        sheetData.append('gender', gender);
+        sheetData.append('profession', profession);
+        sheetData.append('source', source);
+        sheetData.append('timestamp', new Date().toISOString());
 
-        fetch(GOOGLE_SCRIPT_URL,{method:'POST',body:formData,mode:'no-cors'}).catch(()=>{});
+        // Send to Google Sheet
+        fetch(GOOGLE_SCRIPT_URL, {method:'POST', mode:'no-cors', body:sheetData}).catch(()=>{});
 
-        const msg=encodeURIComponent('I am interested in this work');
-        if(typeof fbq!=='undefined'){fbq('track','Contact');}
-        window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`,'_blank');
+        // WhatsApp with ALL details including phone number
+        const msg = encodeURIComponent(`Hi Noor Shifa! I'm ${name}, ${age} years old. I'm a ${profession}. My WhatsApp number is ${phone}. I want to learn digital skills and start earning from home. Please guide me.`);
+        if(typeof fbq !== 'undefined'){fbq('track','Contact');}
+        window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
         closeForm();
     });
 
